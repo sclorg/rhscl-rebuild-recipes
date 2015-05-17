@@ -2,7 +2,11 @@
 
 The idea behind this repo is to prepare a recipe for every collection that will include *steps to build the collection from scratch*. This will also help everybody else (users/customers) trying to do the same, so it may be part of documentation later as well.
 
-The basic information we need to have for rebuilding collections is set of SRPM belonging to particular collection, macros we need to change in order to break circular dependencies and in the best case also order in which the packages get rebuilt.
+The basic information we want to track for rebuilding collections is:
+* `packages` -- set of SRPM belonging to particular collection
+* `requires` -- list of collections it depends on
+* macros we need to change in order to break circular dependencies as list of `macro_name value`
+* in the best case also order in which the packages get rebuilt
 
 In order to be able to parse the recipe and hopefully rebuild the collections *automatically*, let's us the same format.
 
@@ -48,6 +52,13 @@ python27
     - python-jinja2
       - with_docs 0
     - python-coverage
+      ...
+
+ruby193:
+  - Ruby 1.9.3
+  - Requires: v8314
+  - packages:
+    - ruby
       ...
 ```
 
