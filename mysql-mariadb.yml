@@ -1,24 +1,24 @@
 # Recipes for MySQL and MariabDB Software Collections
 ---
-mysql55
+mysql55:
   - name: MySQL 5.5
   - packages:
     - mysql55
     - mysql
 
-rh-mysql56
+rh-mysql56:
   - name: MySQL 5.6
   - packages:
     - rh-mysql56
     - mysql
 
-mariadb55
+mariadb55:
   - name: MariaDB 5.5
   - packages:
     - mariadb55
     - mariadb
 
-rh-mariadb100
+rh-mariadb100:
   - name: MariaDB 10.0
   - packages:
     - rh-mariadb100
