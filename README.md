@@ -20,7 +20,7 @@ An incomplete (in a way not all packages are mentioned here) example of python c
 ```
 # Recipe for python collections
 ---
-python33
+python33:
   - name: Python 3.3
   - packages:
     - python33
@@ -42,7 +42,7 @@ python33
     - python-sqlalchemy
       ...
 
-python27
+python27:
   - name: Python 2.7  
   - packages:
     - python27
