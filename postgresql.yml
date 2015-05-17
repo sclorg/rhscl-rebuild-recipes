@@ -1,0 +1,12 @@
+# Recipes for PostgreSQL Software Collections
+---
+postgresql92
+  - name: PostgreSQL 9.2
+  - packages:
+    - postgresql
+
+rh-postgresql94
+  - name: PostgreSQL 9.4
+  - packages:
+    - postgresql
+
