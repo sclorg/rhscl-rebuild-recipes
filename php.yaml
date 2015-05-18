@@ -1,0 +1,39 @@
+# Recipe for PHP collections
+# WARNING : bootstrap requires editiong the spec file.
+---
+php54:
+  - name: PHP 5.4 collection
+  - packages:
+    - php54
+    - php
+    - php-pear
+    - php-pecl-apc
+    - php-pecl-memcache
+    - php-pecl-zendopcache
+
+php55:
+  - name: PHP 5.5 collection
+  - requires: [httpd24]
+  - packages:
+    - php55
+    - php
+      - php_bootstrap = 1
+    - php-pear
+    - php-pecl-jsonc
+    - php
+    - php-pecl-memcache
+    - php-pecl-mongo
+
+rh-php56:
+  - name: PHP 5.6 collection
+  - requires: [httpd24]
+  - packages:
+    - rh-php56
+    - php
+      - php_bootstrap = 1
+    - php-pear
+    - php-pecl-jsonc
+    - php
+    - php-pecl-memcache
+    - php-pecl-mongo
+    - php-pecl-xdebug
