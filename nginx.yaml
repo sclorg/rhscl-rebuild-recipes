@@ -1,0 +1,13 @@
+# Recipe for nginx16 and nginx14 collections
+---
+nginx16:
+  name: Nginx 1.6.0 collection
+  packages:
+    - nginx16
+    - nginx
+
+nginx14:
+  name: Nginx 1.4.0 collection
+  packages:
+    - nginx14
+    - nginx
