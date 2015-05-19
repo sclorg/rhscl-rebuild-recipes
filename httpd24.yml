@@ -3,8 +3,8 @@
 # Note: httpd24-apr, httpd24-apr-util only exist for RHEL6.
 ---
 httpd24:
-  - name: Apache HTTP Server, v2.4
-  - packages:
+  name: Apache HTTP Server, v2.4
+  packages:
     - apr
     - apr-util
     - httpd

@@ -21,8 +21,8 @@ An incomplete (in a way not all packages are mentioned here) example of python c
 # Recipe for python collections
 ---
 python33:
-  - name: Python 3.3
-  - packages:
+  name: Python 3.3
+  packages:
     - python33
     - python
     - python-setuptools
@@ -43,8 +43,8 @@ python33:
       ...
 
 python27:
-  - name: Python 2.7  
-  - packages:
+  name: Python 2.7
+  packages:
     - python27
     - python
     - python-setuptools
@@ -56,9 +56,9 @@ python27:
       ...
 
 ruby193:
-  - name: Ruby 1.9.3
-  - requires: [v8314]
-  - packages:
+  name: Ruby 1.9.3
+  requires: [v8314]
+  packages:
     - ruby
       ...
 ```

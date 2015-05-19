@@ -1,9 +1,9 @@
 # Recipes for MongoDB Software Collections
 ---
 mongodb24:
-  - name: MongoDB 2.4
-  - requires: [maven30, v3814]
-  - packages:
+  name: MongoDB 2.4
+  requires: [maven30, v3814]
+  packages:
     - mongodb24
     - scons
     - libunwind
@@ -14,9 +14,9 @@ mongodb24:
     - mongodb
 
 rh-mongodb26:
-  - name: MongoDB 2.6
-  - requires: [rh-java-common, maven30, v3814]
-  - packages:
+  name: MongoDB 2.6
+  requires: [rh-java-common, maven30, v3814]
+  packages:
     - rh-mongodb26
     - scons
     - libstemmer

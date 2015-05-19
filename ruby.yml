@@ -1,14 +1,14 @@
 # Recipes for Ruby Software Collections
 ---
 ruby200:
-  - name: Ruby 2.0.0
-  - packages:
+  name: Ruby 2.0.0
+  packages:
     - ruby200
     - ruby
 
 rh-ruby22:
-  - name: Ruby 2.2
-  - packages:
+  name: Ruby 2.2
+  packages:
     - rh-ruby22
     - ruby
     - rubygem-net-http-persistent
