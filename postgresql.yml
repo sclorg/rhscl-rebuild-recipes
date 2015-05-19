@@ -3,10 +3,12 @@
 postgresql92:
   name: PostgreSQL 9.2
   packages:
+    - postgresql92
     - postgresql
 
 rh-postgresql94:
   name: PostgreSQL 9.4
   packages:
+    - rh-postgresql94
     - postgresql
 
