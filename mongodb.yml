@@ -15,7 +15,7 @@ mongodb24:
 
 rh-mongodb26:
   name: MongoDB 2.6
-  requires: [rh-java-common, maven30, v3814]
+  requires: [rh-java-common, maven30, v3814, python27]
   packages:
     - rh-mongodb26
     - scons
