@@ -1,0 +1,13 @@
+# Recipe for rh-passenger40 collections
+---
+rh-passenger40:
+  name: Passenger 4.0 collection
+  requires: [httpd24, ruby193, ruby200, rh-ruby22, ror40, rh-ror41]
+  packages:
+    - rh-passenger40
+    - rubygem-nokogiri
+    - rubygem-mizuho
+    - libev
+    - libeio
+    - rubygem-daemon-controller
+    - passenger
