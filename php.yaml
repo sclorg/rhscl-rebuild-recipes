@@ -16,8 +16,9 @@ php55:
   requires: [httpd24]
   packages:
     - php55
-    - php
-      - php_bootstrap = 1
+    - php:
+        macros:
+          php_bootstrap: 1
     - php-pear
     - php-pecl-jsonc
     - php
@@ -29,8 +30,9 @@ rh-php56:
   requires: [httpd24]
   packages:
     - rh-php56
-    - php
-      - php_bootstrap = 1
+    - php:
+        macros:
+          php_bootstrap: 1
     - php-pear
     - php-pecl-jsonc
     - php

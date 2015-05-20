@@ -7,24 +7,31 @@ python27:
         - python
         - python-setuptools
         - python-wheel
-        - python-pip
-            - build_wheel = 0
+        - python-pip:
+            macros:
+              build_wheel: 0
 
 rh-python34:
     name: Python 3.4
     packages:
-        - rh-python34
-        - python
-            - with_rewheel = 0
-        - python-setuptools
-            - with_rewheel = 0
-        - python-pip
-            - with_rewheel = 0
+        - rh-python34:
+        - python:
+            macros:
+              with_rewheel: 0
+        - python-setuptools:
+            macros:
+              with_rewheel: 0
+        - python-pip:
+            macros:
+              with_rewheel: 0
         - python-wheel
-        - python-setuptools
-            - with_rewheel = 1
-        - python-pip
-            - with_rewheel = 1
-        - python
-            - with_rewheel = 1
+        - python-setuptools:
+            macros:
+              with_rewheel: 1
+        - python-pip:
+            macros:
+              with_rewheel: 1
+        - python:
+            macros:
+              with_rewheel: 1
 

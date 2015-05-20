@@ -1,0 +1,45 @@
+# Recipe for python collections
+---
+python33:
+  - name: Python 3.3
+  - packages:
+    - python33
+    - python
+    - python-setuptools
+    - python-docutils
+    - python-markupsafe
+    - python-jinja2:
+        macros:
+          with_docs: 0
+    - python-coverage
+    - python-nose
+        macros:
+          with_docs: 0
+    - python-sphinx
+    - python-pygments
+    - python-jinja2
+    - python-nose
+    - python-simplejson
+    - python-virtualenv
+    - python-el6-only-package:
+        platforms: [el5, el6]
+    - python-sqlalchemy
+
+python27:
+  - name: Python 2.7  
+  - packages:
+    - python27
+    - python
+    - python-setuptools
+    - python-docutils
+    - python-markupsafe
+    - python-jinja2
+        macros:
+          with_docs: 0
+    - python-coverage
+
+ruby193:
+  - name: Ruby 1.9.3
+  - requires: [v8314]
+  - packages:
+    - ruby
