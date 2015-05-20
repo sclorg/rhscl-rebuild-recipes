@@ -1,4 +1,21 @@
 # Recipe for thermostat1 collection
+#
+# Note that protobuf-java is a BR of netty, its source RPM may be obtain here:
+#
+# https://www.softwarecollections.org/repos/rhscl/thermostat1/epel-7-x86_64/thermostat1-protobuf-java-2.5.0-5.el7.centos.src.rpm
+#
+# Instructions as to how to build the collection are:
+#
+# 1. Install dependent scldevel packages + javapackages-tools:
+#    $ yum install rh-mongodb26-scldevel \
+#                  rh-java-common-scldevel \
+#                  maven30-scldevel \
+#                  maven30-javapackages-tools
+# 2. Build metapackage: thermostat1
+# 3. Build other packages as listed in this yaml file.
+#
+# The maven30 dependency is build-only. No runtime requires should
+# get generated on maven30 packages.
 ---
 thermostat1:
   name: Thermostat 1.2
