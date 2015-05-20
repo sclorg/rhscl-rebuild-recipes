@@ -40,6 +40,8 @@ python33:
     - python-simplejson
     - python-virtualenv
     - python-sqlalchemy
+    - python-el6-only-package:
+        platforms: [el5, el6]
       ...
 
 python27:

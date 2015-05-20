@@ -23,5 +23,7 @@ rh-mariadb100:
   packages:
     - rh-mariadb100
     - Judy
+    - boost:
+        platforms: [el6]
     - mariadb
 
