@@ -1,0 +1,14 @@
+# Recipe for thermostat1 collection
+---
+thermostat1:
+  name: Thermostat 1.2
+  requires: [rh-java-common, rh-mongodb26, maven30]
+  packages:
+    - thermostat1
+    - protobuf-java
+    - netty
+    - jcommon
+    - jfreechart
+    - jline2
+    - apache-commons-fileupload
+    - thermostat
