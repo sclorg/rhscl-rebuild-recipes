@@ -1,201 +1,265 @@
 # Recipe for Perl collections
 #
-# NOTES : 
-# * perl_bootstrap requires editing of macros file in meta-package rh-perl520
-# * rebuild_from_scratch requires editing of the perl spec file
+# NOTES:
+# * After building a package, the package must be put into a repository in
+# order to satisfy dependencies of subsequent packages.
+# * That applies to multiple-times rebuilt packages too (e.g. rh-perl520 and
+# perl). Especially make sure that the resulting binary packages replace
+# previously installed packages (e.g. rh-perl520-build) right after building
+# them.
+# * All steps are cumulative. That means once a package is explicitly
+# installed (e.g. rh-perl520-build, see the `install' directive) you must keep
+# it installed while rebuilding all the subsequent packages.
+# * The `patch' directives just switch `perl_bootstrap' and
+# `rebuild_from_scratch' macro values. Redefining them externally (e.g. by
+# rpmbuild --define) will not help as they are defined in the specification
+# file.
+# * The `install' and `patch' directives must be peformed before building the
+# associated package in order to affect rebuild of the associated package.
+# * The packages ordering guarantees flawless rebuild of the whole collection.
+# Some of the package subsequences are actually independent allowing
+# a parallel rebuild. However, boundaries of these subsequencies are not
+# marked up in this recipe.
 #
-# The order of packages should probably work
-#
-# Recipe for SCL perl516 will be add later
+# Recipe for SCL perl516 will be added later
+---
 
 rh-perl520:
   name: Perl 5.20 collection
   requires: [httpd24]
   packages:
-  - rh-perl520
-    - perl_bootstrap = 1
-  - perl
-    - rebuild_from_scratch = 1
-  - perl-File-Path
-  - perl-Module-CoreList
-  - perl-Perl-OSType
-  - perl-Scalar-List-Utils
-  - perl-constant
-  - perl-Digest
-  - perl-threads
-  - perl-Thread-Queue
-  - perl-Module-Load
-  - perl-Pod-Simple
-  - perl-Locale-Codes
-  - perl-Locale-Maketext
-  - perl-Text-ParseWords
-  - perl-Compress-Raw-Bzip2
-  - perl-Term-ANSIColor
-  - perl-Digest-SHA
-  - perl-Devel-PPPort
-  - perl-Parse-CPAN-Meta
-  - perl-Test-Simple
-  - perl-Storable
-  - perl-ExtUtils-Manifest
-  - perl-Filter-Simple
-  - perl-ExtUtils-ParseXS
-  - perl-Pod-Checker
-  - perl-Socket
-  - perl-Module-Build-Deprecated
-  - perl-Module-Metadata
-  - perl-Digest-MD5
-  - perl-Sys-Syslog
-  - perl-podlators
-  - perl-Package-Constants
-  - perl-IPC-Cmd
-  - perl-Compress-Raw-Zlib
-  - perl-PathTools
-  - perl-Carp
-  - perl-Module-Load-Conditional
-  - perl-CPAN-Meta-Requirements
-  - perl-File-Fetch
-  - perl-Filter
-  - perl-Pod-Usage
-  - perl-CPAN-Meta
-  - perl-ExtUtils-CBuilder
-  - perl-threads-shared
-  - perl-File-Temp
-  - perl-Exporter
-  - perl-Getopt-Long
-  - perl-parent
-  - perl-B-Debug
-  - perl-Pod-Parser
-  - perl-Time-HiRes
-  - perl-Env
-  - perl-CPAN
-  - perl-Time-Local
-  - perl-version
-  - perl-ExtUtils-Install
-  - perl-HTTP-Tiny
-  - perl-Data-Dumper
-  - perl-ExtUtils-Command
-  - perl-autodie
-  - perl-Pod-Perldoc
-  - perl-Encode
-  - perl-Test-Harness
-  - perl-Params-Check
-  - perl-DB_File
-  - perl-ExtUtils-MakeMaker
-  - perl-IO-Compress
-  - perl-Archive-Tar
-  - perl-FCGI
-  - perl-CGI
-  - perl-CGI-Fast
-  - perl-experimental
-  - perl-Module-Build
-  - perl-JSON-PP
-  - perl-IO-Socket-IP
-  - perl-CPAN-Meta-YAML
-  - perl-DBI
-  - perl-DBD-Pg
-  - perl-DBD-MySQL
-  - perl-DBD-SQLite
-  - perl-App-a2p
-  - perl-App-s2p
-  - perl-App-find2perl
-  - perl-Tie-IxHash
-  - perl-Linux-Pid
-  - perl-Data-Flow
-  - mod_perl
-  - perl-Compress-Bzip2
-  - perl-URI
-  - perl-Text-Glob
-  - perl-Devel-FindPerl
-  - perl-IO-stringy
-  - perl-Sub-Install
-  - perl-Algorithm-Diff
-  - perl-File-Which
-  - perl-Text-Diff
-  - perl-Archive-Zip
-  - perl-File-HomeDir
-  - perl-local-lib
-  - perl-Devel-Size
-  - perl-IPC-System-Simple
-  - perl-Devel-CheckBin
-  - perl-Sub-Name
-  - perl-Try-Tiny
-  - perl-Capture-Tiny
-  - perl-Text-Template
-  - perl-Test-FailWarnings
-  - perl-MRO-Compat
-  - perl-Params-Util
-  - perl-Data-OptList
-  - perl-Package-Generator
-  - perl-Sub-Exporter
-  - perl-Data-Section
-  - perl-Software-License
-  - perl-Test-Warnings
-  - perl-Test-Requires
-  - perl-Readonly
-  - perl-Test-Fatal
-  - perl-Exporter-Tiny
-  - perl-Module-Runtime
-  - perl-List-MoreUtils
-  - perl-List-AllUtils
-  - perl-Module-Implementation
-  - perl-Params-Validate
-  - perl-Class-Singleton
-  - perl-DateTime-TimeZone
-  - perl-DateTime-Locale
-  - perl-Params-Classify
-  - perl-Date-ISO8601
-  - perl-DateTime-TimeZone-SystemV
-  - perl-DateTime-TimeZone-Tzfile
-  - perl-DateTime
-  - perl-BSD-Resource
-  - perl-IPC-Run3
-  - perl-Business-ISBN
-  - perl-Business-ISBN-Data
-  - rh-perl520
-    - perl_bootstrap = 0
-  - perl
-    - rebuild_from_scratch = 0
-  - perl-App-a2p
-  - perl-App-find2perl
-  - perl-App-s2p
-  - perl-Archive-Tar
-  - perl-B-Debug
-  - perl-Business-ISBN
-  - perl-CGI
-  - perl-CGI-Fast
-  - perl-CPAN
-  - perl-CPAN-Meta-Requirements
-  - perl-CPAN-Meta-YAML
-  - perl-Capture-Tiny
-  - perl-Compress-Raw-Bzip2
-  - perl-Compress-Raw-Zlib
-  - perl-DBI
-  - perl-DB_File
-  - perl-Data-Dumper
-  - perl-DateTime-TimeZone
-  - perl-Digest-SHA
-  - perl-Exporter
-  - perl-ExtUtils-Install
-  - perl-File-Path
-  - perl-File-Which
-  - perl-Filter
-  - perl-IO-Compress
-  - perl-IO-Socket-IP
-  - perl-JSON-PP
-  - perl-Locale-Maketext
-  - perl-Module-Build
-  - perl-Module-CoreList
-  - perl-Module-Implementation
-  - perl-Params-Validate
-  - perl-Parse-CPAN-Meta
-  - perl-Perl-OSType
-  - perl-Pod-Parser
-  - perl-Pod-Perldoc
-  - perl-Sub-Install
-  - perl-Sys-Syslog
-  - perl-Test-Harness
-  - perl-Test-Requires
-  - perl-Tie-IxHash
-  - perl-URI
-  - perl-autodie
-  - perl-constant
+    - rh-perl520:
+        install:
+          - scl-utils-build
+        patch: |
+          --- a/macro-build
+          +++ b/macro-build
+          @@ -3,7 +3,7 @@
+           %__perl_requires /usr/lib/rpm/perl.req.stack
+           
+           # Perl bootstrap for rebuild of Perl and all related packages
+          -#%%perl_bootstrap 1
+          +%perl_bootstrap 1
+           
+           # Enable SCL restrictions
+           %perl_small 1
+    - perl:
+        install:
+          - rh-perl520-build
+        patch: |
+          --- a/perl.spec
+          +++ b/perl.spec
+          @@ -12,7 +12,7 @@
+           %global tapsetdir   %{_datadir}/systemtap/tapset
+           
+           %global dual_life 0
+          -%global rebuild_from_scratch 0
+          +%global rebuild_from_scratch 1
+           
+           %if ! ( 0%{?rhel} && 0%{?rhel} < 7 )
+           # This overrides filters from build root (/usr/lib/rpm/macros.d/macros.perl)
+    - perl-Package-Constants
+    - perl-Pod-Usage
+    - perl-Locale-Maketext
+    - perl-App-s2p
+    - perl-Compress-Raw-Zlib
+    - perl-parent
+    - perl-Storable
+    - perl-Archive-Tar
+    - perl-Digest
+    - perl-Time-HiRes
+    - perl-Data-Flow
+    - perl-Env
+    - perl-threads-shared
+    - perl-CGI
+    - perl-Text-Template
+    - perl-Parse-CPAN-Meta
+    - perl-constant
+    - perl-Linux-Pid
+    - perl-DB_File
+    - perl-CPAN-Meta
+    - perl-App-find2perl
+    - perl-DBI
+    - perl-Getopt-Long
+    - perl-App-a2p
+    - perl-Exporter
+    - perl-Sys-Syslog
+    - perl-Params-Util
+    - perl-threads
+    - perl-Algorithm-Diff
+    - perl-Text-Glob
+    - perl-podlators
+    - perl-Encode
+    - perl-Filter
+    - perl-File-Path
+    - perl-JSON-PP
+    - perl-IO-stringy
+    - perl-PathTools
+    - perl-Pod-Checker
+    - perl-Carp
+    - perl-Devel-PPPort
+    - perl-Test-Requires
+    - perl-File-Temp
+    - perl-Params-Check
+    - perl-Module-CoreList
+    - perl-Test-Harness
+    - perl-Compress-Raw-Bzip2
+    - perl-CPAN-Meta-Requirements
+    - perl-autodie
+    - perl-Archive-Zip
+    - perl-Devel-FindPerl
+    - perl-Capture-Tiny
+    - perl-experimental
+    - perl-Filter-Simple
+    - perl-Digest-MD5
+    - perl-Digest-SHA
+    - perl-Class-Singleton
+    - perl-Pod-Simple
+    - perl-FCGI
+    - perl-MRO-Compat
+    - perl-version
+    - perl-B-Debug
+    - perl-Time-Local
+    - perl-Perl-OSType
+    - perl-IPC-Cmd
+    - perl-Test-Simple
+    - perl-Devel-Size
+    - perl-Locale-Codes
+    - perl-Scalar-List-Utils
+    - perl-File-Fetch
+    - perl-File-Which
+    - perl-URI
+    - perl-Data-Dumper
+    - perl-CPAN-Meta-YAML
+    - perl-Pod-Perldoc
+    - perl-ExtUtils-Manifest
+    - perl-Pod-Parser
+    - perl-Sub-Install
+    - perl-Text-ParseWords
+    - perl-HTTP-Tiny
+    - perl-ExtUtils-Command
+    - perl-ExtUtils-ParseXS
+    - perl-ExtUtils-Install
+    - perl-Compress-Bzip2
+    - perl-Module-Load
+    - perl-Socket
+    - perl-Thread-Queue
+    - perl-IPC-System-Simple
+    - perl-Module-Metadata
+    - perl-Tie-IxHash
+    - perl-ExtUtils-CBuilder
+    - perl-Module-Load-Conditional
+    - perl-Package-Generator
+    - perl-Module-Runtime
+    - perl-Readonly
+    - perl-Params-Classify
+    - perl-Test-Warnings
+    - perl-Devel-CheckBin
+    - perl-IO-Socket-IP
+    - perl-ExtUtils-MakeMaker
+    - perl-Text-Diff
+    - perl-Data-OptList
+    - perl-File-HomeDir
+    - perl-CPAN
+    - perl-Test-FailWarnings
+    - perl-CGI-Fast
+    - perl-DBD-MySQL
+    - perl-IO-Compress
+    - perl-DBD-SQLite
+    - perl-Module-Build
+    - perl-Term-ANSIColor
+    - perl-DBD-Pg
+    - perl-Module-Build-Deprecated
+    - perl-Date-ISO8601
+    - perl-Sub-Name
+    - perl-local-lib
+    - perl-Sub-Exporter
+    - perl-DateTime-TimeZone-SystemV
+    - perl-Data-Section
+    - perl-Try-Tiny
+    - perl-DateTime-TimeZone-Tzfile
+    - perl-Software-License
+    - perl-Test-Fatal
+    - perl-Exporter-Tiny
+    - perl-Module-Implementation
+    - perl-List-MoreUtils
+    - perl-Params-Validate
+    - perl-DateTime-Locale
+    - perl-List-AllUtils
+    - perl-DateTime-TimeZone
+    - perl-DateTime
+    - mod_perl
+    - rh-perl520:
+        patch: |
+          --- a/macro-build
+          +++ b/macro-build
+          @@ -3,7 +3,7 @@
+           %__perl_requires /usr/lib/rpm/perl.req.stack
+           
+           # Perl bootstrap for rebuild of Perl and all related packages
+          +%perl_bootstrap 1
+          -#%%perl_bootstrap 1
+           
+           # Enable SCL restrictions
+           %perl_small 1
+    - perl:
+        patch: |
+          --- a/perl.spec
+          +++ b/perl.spec
+          @@ -12,7 +12,7 @@
+           %global tapsetdir   %{_datadir}/systemtap/tapset
+           
+           %global dual_life 0
+          +%global rebuild_from_scratch 1
+          -%global rebuild_from_scratch 0
+           
+           %if ! ( 0%{?rhel} && 0%{?rhel} < 7 )
+           # This overrides filters from build root (/usr/lib/rpm/macros.d/macros.perl)
+    - perl-Test-Requires
+    - perl-Sub-Install
+    - perl-autodie
+    - perl-Exporter
+    - perl-Digest-SHA
+    - perl-CPAN-Meta-Requirements
+    - perl-Parse-CPAN-Meta
+    - perl-App-s2p
+    - perl-DB_File
+    - perl-Pod-Perldoc
+    - perl-Tie-IxHash
+    - perl-CPAN-Meta-YAML
+    - perl-Module-CoreList
+    - perl-File-Which
+    - perl-Sys-Syslog
+    - perl-Params-Validate
+    - perl-constant
+    - perl-Data-Dumper
+    - perl-DateTime-TimeZone
+    - perl-App-find2perl
+    - perl-Perl-OSType
+    - perl-Compress-Raw-Zlib
+    - perl-Archive-Tar
+    - perl-CGI-Fast
+    - perl-IO-Socket-IP
+    - perl-Pod-Parser
+    - perl-Locale-Maketext
+    - perl-IO-Compress
+    - perl-Module-Implementation
+    - perl-File-Path
+    - perl-DBI
+    - perl-Filter
+    - perl-CGI
+    - perl-Module-Build
+    - perl-JSON-PP
+    - perl-ExtUtils-Install
+    - perl-App-a2p
+    - perl-Compress-Raw-Bzip2
+    - perl-Test-Harness
+    - perl-B-Debug
+    - perl-Capture-Tiny
+    - perl-CPAN
+    - perl-BSD-Resource
+    - perl-Business-ISBN-Data
+    - perl-IPC-Run3
+    - perl-Business-ISBN
+    - perl-URI
+# Result is 137 source and 193 binary (157 ordinar, 36 debuginfo) packages.
