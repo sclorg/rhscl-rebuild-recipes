@@ -399,8 +399,8 @@ rh-perl520:
            %__perl_requires /usr/lib/rpm/perl.req.stack
            
            # Perl bootstrap for rebuild of Perl and all related packages
-          +%perl_bootstrap 1
-          -#%%perl_bootstrap 1
+          -%perl_bootstrap 1
+          +#%%perl_bootstrap 1
            
            # Enable SCL restrictions
            %perl_small 1
@@ -412,8 +412,8 @@ rh-perl520:
            %global tapsetdir   %{_datadir}/systemtap/tapset
            
            %global dual_life 0
-          +%global rebuild_from_scratch 1
-          -%global rebuild_from_scratch 0
+          -%global rebuild_from_scratch 1
+          +%global rebuild_from_scratch 0
            
            %if ! ( 0%{?rhel} && 0%{?rhel} < 7 )
            # This overrides filters from build root (/usr/lib/rpm/macros.d/macros.perl)
