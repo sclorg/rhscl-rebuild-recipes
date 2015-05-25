@@ -24,6 +24,208 @@
 # Recipe for SCL perl516 will be added later
 ---
 
+perl516:
+  name: Perl 5.16 collection
+  requires: [httpd24]
+  packages:
+    - perl516:
+        install:
+          - scl-utils-build
+        patch: |
+          --- a/macro-build
+          +++ b/macro-build
+          @@ -1,7 +1,7 @@
+           %__perl %_scl_root/usr/bin/perl
+           %__perl_provides /usr/lib/rpm/perl.prov.stack
+           %__perl_requires /usr/lib/rpm/perl.req.stack
+          -#%%perl_bootstrap 1
+          +%perl_bootstrap 1
+    - perl:
+        install:
+          - perl516-build
+          - perl516-scldevel
+        patch: |
+          --- a/perl.spec
+          +++ b/perl.spec
+          @@ -12,7 +12,7 @@
+           %global tapsetdir   %{_datadir}/systemtap/tapset
+           
+           %global dual_life 0
+          -%global rebuild_from_scratch 0
+          +%global rebuild_from_scratch 1
+           
+           %if ! ( 0%{?rhel} && 0%{?rhel} < 7 )
+           # This overrides filters from build root (/etc/rpm/macros.perl)
+    - perl-Pod-Usage
+    - perl-Perl-OSType
+    - perl-Digest-SHA
+    - perl-File-CheckTree
+    - perl-Readonly-XS
+    - perl-Capture-Tiny
+    - perl-Version-Requirements
+    - perl-threads-shared
+    - perl-Class-Singleton
+    - perl-Params-Util
+    - perl-IPC-Cmd
+    - perl-Locale-Codes
+    - perl-Pod-Parser
+    - perl-Socket
+    - perl-Encode
+    - perl-Net-Daemon
+    - perl-Log-Message
+    - perl-Taint-Runtime
+    - perl-PathTools
+    - perl-Probe-Perl
+    - perl-File-Copy-Recursive
+    - perl-ExtUtils-Manifest
+    - perl-Class-Inspector
+    - perl-Test-Pod
+    - perl-B-Lint
+    - perl-Carp
+    - perl-Module-Pluggable
+    - perl-Text-Glob
+    - perl-Test-Requires
+    - perl-Devel-Symdump
+    - perl-Linux-Pid
+    - perl-podlators
+    - perl-Thread-Queue
+    - perl-Term-UI
+    - perl-Data-Dumper
+    - perl-Module-Metadata
+    - perl-CPAN-Meta-Requirements
+    - perl-FCGI
+    - perl-Pod-Perldoc
+    - perl-Text-Unidecode
+    - perl-Test-Tester
+    - perl-Scalar-List-Utils
+    - perl-Digest
+    - perl-Filter
+    - perl-Text-Soundex
+    - perl-Number-Compare
+    - perl-IO-String
+    - perl-Sub-Install
+    - perl-autodie
+    - perl-Devel-StackTrace
+    - perl-Params-Check
+    - perl-threads
+    - perl-parent
+    - perl-Sub-Name
+    - perl-YAML
+    - perl-Compress-Raw-Zlib
+    - perl-Compress-Raw-Bzip2
+    - perl-Readonly
+    - perl-Inline-Files
+    - perl-Pod-Simple
+    - perl-Tie-IxHash
+    - perl-Sys-Syslog
+    - perl-File-ShareDir
+    - perl-CGI
+    - perl-CPAN-Meta-YAML
+    - perl-Clone
+    - perl-IO-Compress
+    - perl-Data-OptList
+    - perl-Archive-Tar
+    - perl-PlRPC
+    - perl-Pod-Coverage
+    - perl-Test-NoWarnings
+    - perl-Package-Generator
+    - perl-Try-Tiny
+    - perl-JSON-PP
+    - perl-Pod-Checker
+    - perl-Test-Fatal
+    - perl-Sub-Exporter
+    - perl-Test-Pod-Coverage
+    - perl-Parse-CPAN-Meta
+    - perl-Data-Peek
+    - perl-File-Slurp
+    - perl-Test-CPAN-Meta
+    - perl-DBI
+    - perl-BSD-Resource
+    - perl-CPAN-Meta
+    - perl-IPC-Run3
+    - perl-Test-Output
+    - perl-Package-Anon
+    - perl-Test-Taint
+    - perl-DBD-MySQL
+    - perl-List-MoreUtils
+    - perl-Test-Without-Module
+    - perl-Test-Script
+    - perl-Tree-DAG_Node
+    - perl-DBD-Pg
+    - perl-DBD-SQLite
+    - perl-DBIx-Simple
+    - perl-Package-Stash-XS
+    - perl-Sub-Uplevel
+    - perl-Test-Warn
+    - perl-ExtUtils-MakeMaker
+    - perl-Parse-RecDescent
+    - perl-Module-Runtime
+    - perl-version
+    - perl-Module-Build
+    - perl-Inline
+    - perl-Dist-CheckConflicts
+    - perl-Module-Implementation
+    - perl-Package-Stash
+    - perl-Params-Validate
+    - perl-DateTime-Locale
+    - perl-Class-Load
+    - perl-DateTime-TimeZone
+    - perl-Class-Load-XS
+    - perl-DateTime
+    - mod_perl
+    - perl516:
+        patch: |
+          --- a/macro-build
+          +++ b/macro-build
+          @@ -1,7 +1,7 @@
+           %__perl %_scl_root/usr/bin/perl
+           %__perl_provides /usr/lib/rpm/perl.prov.stack
+           %__perl_requires /usr/lib/rpm/perl.req.stack
+          -%perl_bootstrap 1
+          +#%%perl_bootstrap 1
+    - perl:
+        patch: |
+          --- a/perl.spec
+          +++ b/perl.spec
+          @@ -12,7 +12,7 @@
+           %global tapsetdir   %{_datadir}/systemtap/tapset
+           
+           %global dual_life 0
+          -%global rebuild_from_scratch 1
+          +%global rebuild_from_scratch 0
+           
+           %if ! ( 0%{?rhel} && 0%{?rhel} < 7 )
+           # This overrides filters from build root (/etc/rpm/macros.perl)
+    - perl-DateTime-TimeZone
+    - perl-Compress-Raw-Zlib
+    - perl-List-MoreUtils
+    - perl-Params-Validate
+    - perl-Digest-SHA
+    - perl-Filter
+    - perl-Data-Dumper
+    - perl-Capture-Tiny
+    - perl-IO-Compress
+    - perl-DBI
+    - perl-CPAN-Meta-Requirements
+    - perl-Test-Requires
+    - perl-Class-Load
+    - perl-Sub-Install
+    - perl-Module-Metadata
+    - perl-CPAN-Meta-YAML
+    - perl-autodie
+    - perl-Class-Inspector
+    - perl-Pod-Perldoc
+    - perl-Module-Build
+    - perl-Perl-OSType
+    - perl-Tie-IxHash
+    - perl-Test-Script
+    - perl-Sys-Syslog
+    - perl-Devel-Symdump
+    - perl-Archive-Tar
+    - perl-Compress-Raw-Bzip2
+    - perl-Version-Requirements
+# Result is 119 source and 204 binary (168 ordinar, 36 debuginfo) packages.
+
 rh-perl520:
   name: Perl 5.20 collection
   requires: [httpd24]
