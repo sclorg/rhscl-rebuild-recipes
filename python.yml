@@ -10,11 +10,36 @@ python27:
         - python-pip:
             macros:
               build_wheel: 0
+        - python-coverage
+        - python-nose:
+            macros:
+                with_docs: 0
+        - python-markupsafe
+        - python-jinja2:
+            macros:
+                with_docs: 0
+        - python-docutils
+        - python-pygments
+        - python-sphinx
+        - python-nose:
+            macros:
+                with_docs: 1
+        - python-jinja2:
+            macros:
+                with_docs: 1
+        - python-six
+        - babel
+        - python-psycopg2
+        - python-pymongo
+        - python-simplejson
+        - python-sqlalchemy
+        - python-virtualenv
+        - python-werkzeug
 
 rh-python34:
     name: Python 3.4
     packages:
-        - rh-python34:
+        - rh-python34
         - python:
             macros:
               with_rewheel: 0
@@ -34,4 +59,29 @@ rh-python34:
         - python:
             macros:
               with_rewheel: 1
+        - python-coverage
+        - python-nose:
+            macros:
+                with_docs: 0
+        - python-markupsafe
+        - python-jinja2:
+            macros:
+                with_docs: 0
+        - python-docutils
+        - python-pygments
+        - python-sphinx
+        - python-nose:
+            macros:
+                with_docs: 1
+        - python-jinja2:
+            macros:
+                with_docs: 1
+        - python-six
+        - babel
+        - python-psycopg2
+        - python-pymongo
+        - python-simplejson
+        - python-sqlalchemy
+        - python-virtualenv
+        - python-werkzeug
 
