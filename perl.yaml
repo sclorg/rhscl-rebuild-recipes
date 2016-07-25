@@ -463,3 +463,235 @@ rh-perl520:
     - perl-Business-ISBN
     - perl-URI
 # Result is 137 source and 193 binary (157 ordinar, 36 debuginfo) packages.
+
+rh-perl524:
+  name: Perl 5.24 collection
+  requires: [httpd24]
+  packages:
+    - rh-perl524:
+        install:
+          - scl-utils-build
+        patch: |
+          --- a/macro-build
+          +++ b/macro-build
+          @@ -1,5 +1,5 @@
+           # Perl bootstrap for rebuild of Perl and all related packages
+          -#%%perl_bootstrap 0
+          +%perl_bootstrap 1
+           
+           # Enable SCL restrictions
+           %perl_small 1
+          @@ -8,6 +8,7 @@
+           # not allowed in macro name
+           %scl_package_override() %{expand: \
+           %global perl_small 1 \
+          +%global perl_bootstrap 1 \
+           %global __perl LD_LIBRARY_PATH="@LIBDIR@${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" %_scl_root/usr/bin/perl \
+           %global __perl_requires /usr/lib/rpm/perl.req.@SCL@ \
+           %global __perl_provides /usr/lib/rpm/perl.prov.@SCL@ \
+          --- a/macro-build-rh6
+          +++ b/macro-build-rh6
+          @@ -3,7 +3,7 @@
+           %__perl_requires /usr/lib/rpm/perl.req.@SCL@
+           
+           # Perl bootstrap for rebuild of Perl and all related packages
+          -#%%perl_bootstrap 0
+          +%perl_bootstrap 1
+           
+           # Enable SCL restrictions
+           %perl_small 1
+    - perl:
+        install:
+          - rh-perl524-build
+    - perl-Fedora-VSP
+    - perl-generators
+    - perl-constant
+    - perl-Tie-IxHash
+    - perl-threads-shared
+    - perl-IO-Socket-IP
+    - perl-version
+    - perl-IO-Compress
+    - perl-Compress-Raw-Zlib
+    - perl-Getopt-Long
+    - perl-Filter
+    - perl-Capture-Tiny
+    - perl-File-Temp
+    - perl-Class-Singleton
+    - perl-Pod-Perldoc
+    - perl-Unicode-Collate
+    - perl-autodie
+    - perl-Exporter
+    - perl-Time-HiRes
+    - perl-PathTools
+    - perl-Compress-Bzip2
+    - perl-Module-CoreList
+    - perl-Archive-Tar
+    - perl-Scalar-List-Utils
+    - perl-Test-Simple
+    - perl-HTTP-Tiny
+    - perl-Locale-Codes
+    - perl-PerlIO-via-QuotedPrint
+    - perl-Pod-Parser
+    - perl-Test-Deep
+    - perl-File-Which
+    - perl-Math-BigInt
+    - perl-URI
+    - perl-ExtUtils-Install
+    - perl-Text-Template
+    - perl-Linux-Pid
+    - perl-Text-Tabs+Wrap
+    - perl-MIME-Base64
+    - perl-Socket
+    - perl-Text-Glob
+    - perl-Storable
+    - perl-Digest
+    - perl-Data-Flow
+    - perl-Digest-SHA
+    - perl-Sub-Install
+    - perl-File-Fetch
+    - perl-Filter-Simple
+    - perl-CPAN-Meta-Requirements
+    - perl-CPAN-DistnameInfo
+    - perl-File-Path
+    - perl-Business-ISBN-Data
+    - perl-experimental
+    - perl-inc-latest
+    - perl-BSD-Resource
+    - perl-Digest-MD5
+    - perl-Env
+    - perl-String-ShellQuote
+    - perl-Test-Harness
+    - perl-Params-Util
+    - perl-Unicode-Normalize
+    - perl-Test-Requires
+    - perl-Module-Metadata
+    - perl-Pod-Escapes
+    - perl-Devel-PPPort
+    - perl-Sys-Syslog
+    - perl-ExtUtils-CBuilder
+    - perl-JSON-PP
+    - perl-Pod-Usage
+    - perl-Pod-Simple
+    - perl-Compress-Raw-Bzip2
+    - perl-Text-Balanced
+    - perl-File-pushd
+    - perl-threads
+    - perl-ExtUtils-Manifest
+    - perl-Locale-Maketext
+    - perl-Pod-Checker
+    - perl-Encode
+    - perl-B-Debug
+    - perl-CPAN-Meta-YAML
+    - perl-IO-Tty
+    - perl-YAML
+    - perl-MRO-Compat
+    - perl-Module-Load
+    - perl-perlfaq
+    - perl-CPAN-Meta
+    - perl-Test-Warnings
+    - perl-Params-Check
+    - perl-Module-Load-Conditional
+    - perl-Time-Local
+    - perl-podlators
+    - perl-DBI
+    - perl-DB_File
+    - perl-Term-ANSIColor
+    - perl-Module-CPANfile
+    - perl-Encode-Locale
+    - perl-Text-ParseWords
+    - perl-ExtUtils-MakeMaker
+    - perl-libnet
+    - perl-Try-Tiny
+    - perl-Carp
+    - perl-Archive-Zip
+    - perl-IPC-SysV
+    - perl-Devel-Size
+    - perl-Data-Dumper
+    - perl-Term-Cap
+    - perl-Thread-Queue
+    - perl-ExtUtils-ParseXS
+    - perl-Devel-StackTrace
+    - perl-Perl-OSType
+    - perl-Algorithm-Diff
+    - perl-parent
+    - perl-Package-Generator
+    - perl-Text-Diff
+    - perl-Module-Build
+    - perl-Data-OptList
+    - perl-DBD-SQLite
+    - perl-Test-FailWarnings
+    - perl-IPC-Run
+    - perl-DBD-Pg
+    - perl-CPAN-Meta-Check
+    - perl-ExtUtils-MakeMaker-CPANfile
+    - mod_perl
+    - perl-DBD-MySQL
+    - perl-Business-ISBN
+    - perl-File-HomeDir
+    - perl-Test-NoWarnings
+    - perl-Parse-CPAN-Meta
+    - perl-App-cpanminus
+    - perl-Module-Runtime
+    - perl-Sub-Exporter
+    - perl-Date-ISO8601
+    - perl-IPC-Cmd
+    - perl-IPC-System-Simple
+    - perl-Parse-PMFile
+    - perl-Config-Perl-V
+    - perl-local-lib
+    - perl-CPAN
+    - perl-Params-Classify
+    - perl-Data-Section
+    - perl-DateTime-TimeZone-SystemV
+    - perl-Software-License
+    - perl-DateTime-TimeZone-Tzfile
+    - perl-Test-Fatal
+    - perl-Dist-CheckConflicts
+    - perl-Module-Implementation
+    - perl-Params-Validate
+    - perl-DateTime-Locale
+    - perl-DateTime-TimeZone
+    - perl-DateTime
+    - rh-perl524:
+        patch: |
+          --- a/macro-build
+          +++ b/macro-build
+          @@ -1,5 +1,5 @@
+           # Perl bootstrap for rebuild of Perl and all related packages
+          -%perl_bootstrap 1
+          +#%%perl_bootstrap 0
+           
+           # Enable SCL restrictions
+           %perl_small 1
+          @@ -8,7 +8,6 @@
+           # not allowed in macro name
+           %scl_package_override() %{expand: \
+           %global perl_small 1 \
+          -%global perl_bootstrap 1 \
+           %global __perl LD_LIBRARY_PATH="@LIBDIR@${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" %_scl_root/usr/bin/perl \
+           %global __perl_requires /usr/lib/rpm/perl.req.@SCL@ \
+           %global __perl_provides /usr/lib/rpm/perl.prov.@SCL@ \
+          --- a/macro-build-rh6
+          +++ b/macro-build-rh6
+          @@ -3,7 +3,7 @@
+           %__perl_requires /usr/lib/rpm/perl.req.@SCL@
+           
+           # Perl bootstrap for rebuild of Perl and all related packages
+          -%perl_bootstrap 1
+          +#%%perl_bootstrap 0
+           
+           # Enable SCL restrictions
+           %perl_small 1
+    - perl-Module-Build
+    - perl-URI
+    - perl-autodie
+    - perl-JSON-PP
+    - perl-Archive-Tar
+    - perl-DateTime-TimeZone
+    - perl-Data-Dumper
+    - perl-CPAN-Meta-YAML
+    - perl-Fedora-VSP
+    - perl-generators
+    - perl
+    - perl-CPAN
+# Result is 151 source and 225 binary (188 ordinar, 37 debuginfo) packages.
