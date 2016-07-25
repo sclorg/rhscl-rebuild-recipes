@@ -20,8 +20,6 @@
 # Some of the package subsequences are actually independent allowing
 # a parallel rebuild. However, boundaries of these subsequencies are not
 # marked up in this recipe.
-#
-# Recipe for SCL perl516 will be added later
 ---
 
 perl516:
