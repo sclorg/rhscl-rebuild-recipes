@@ -1,0 +1,147 @@
+# Recipe for Ruby on Rails collections
+---
+rh-ror50:
+  name: Ruby on Rails 5.0
+  requires: [rh-ruby23, rh-nodejs4, rh-mongodb32]
+  # install: Copr - Settings - Build options - Click "Edit" on target
+  #   Packages
+  install:
+    - scl-utils-build
+    - rh-ruby23-scldevel
+    - rh-ror50-build
+  packages:
+    - rh-ror50
+    # Packages required by RSpec, Cucumber
+    - rubygem-rspec
+    - rubygem-rspec-core:
+        replaced_macros:
+          need_bootstrap_set: 1
+    - rubygem-rspec-support:
+        replaced_macros:
+          need_bootstrap_set: 1
+    - rubygem-diff-lcs:
+        macros:
+          _with_bootstrap: 1
+    - rubygem-rspec-expectations:
+        replaced_macros:
+          need_bootstrap_set: 1
+    - rubygem-rspec-mocks:
+        replaced_macros:
+          need_bootstrap_set: 1
+    - rubygem-nokogiri
+    - rubygem-flexmock
+    - rubygem-metaclass
+    - rubygem-builder
+    - rubygem-introspection
+    - rubygem-mocha
+    - rubygem-rr
+    - rubygem-coderay
+    - rubygem-thread_order
+    - rubygem-gherkin
+    - rubygem-multi_test
+    - rubygem-ffi
+    - rubygem-childprocess
+    - rubygem-multi_json
+    - rubygem-cucumber-core
+    - rubygem-cucumber-wire:
+        macros:
+          _with_bootstrap: 1
+    - rubygem-cucumber:
+        macros:
+          _with_bootstrap: 1
+    - rubygem-aruba
+    - rubygem-cucumber
+    - rubygem-cucumber-wire
+    - rubygem-rspec-mocks
+    - rubygem-rspec-expectations
+    - rubygem-diff-lcs
+    - rubygem-rspec-support
+    - rubygem-rspec-core
+    # Packages required by Rails
+    - rubygem-concurrent-ruby
+    - rubygem-dalli:
+        replaced_macros:
+          enable_test: 0
+    - rubygem-test_declarative
+    - rubygem-i18n
+    - rubygem-rack
+    - rubygem-atomic
+    - rubygem-thread_safe
+    - rubygem-tzinfo
+    - rubygem-activesupport
+    - rubygem-bcrypt
+    - rubygem-activemodel
+    - rubygem-sqlite3
+    - rubygem-erubis
+    - rubygem-arel
+    - rubygem-activerecord
+    - rubygem-globalid:
+        macros:
+          _with_bootstrap: 1
+    - rubygem-activejob
+    - rubygem-actionpack:
+        macros:
+          _with_bootstrap: 1
+    - rubygem-nio4r
+    - rubygem-websocket-extensions
+    - rubygem-websocket-driver
+    - rubygem-coffee-script-source
+    - rubygem-execjs
+    - rubygem-coffee-script
+    - rubygem-ejs
+    - rubygem-rack-test:
+        macros:
+          _with_bootstrap: 1
+    - rubygem-sass
+    - rubygem-uglifier
+    - rubygem-sprockets
+    - rubygem-rails-dom-testing
+    - rubygem-loofah
+    - rubygem-rails-html-sanitizer
+    - rubygem-actionview:
+        replaced_macros:
+          bootstrap: 1
+    - rubygem-actioncable
+    - rubygem-mime-types-data
+    - rubygem-mime-types
+    - rubygem-mail
+    - rubygem-actionmailer
+    - rubygem-rails
+    - rubygem-thor
+    - rubygem-bacon
+    - rubygem-method_source
+    - rubygem-rack-cache
+    - rubygem-sprockets-rails:
+        macros:
+          _with_bootstrap: 1
+    - rubygem-railties:
+        macros:
+          _with_bootstrap: 1
+    - rubygem-dalli
+    - rubygem-globalid
+    - rubygem-actionpack
+    - rubygem-rack-protection
+    - rubygem-tilt
+    - rubygem-sinatra
+    - rubygem-rack-test
+    - rubygem-actionview
+    - rubygem-sprockets-rails
+    - rubygem-jquery-rails
+    - rubygem-turbolinks-source
+    - rubygem-turbolinks
+    - rubygem-railties
+    # Packages required by Rails application
+    - rubygem-puma
+    - rubygem-sass-rails
+    - rubygem-coffee-rails
+    - rubygem-jbuilder
+    - rubygem-byebug
+    - rubygem-debug_inspector
+    - rubygem-web-console
+    - rubygem-rb-inotify
+    - rubygem-listen
+    - rubygem-spring
+    - rubygem-spring-watcher-listen
+    # Packages required by MongoDB (Special request)
+    - rubygem-bson
+    - rubygem-mongo
