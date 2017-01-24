@@ -10,7 +10,9 @@ rh-ror50:
     - rh-ruby23-scldevel
     - rh-ror50-build
   packages:
-    - rh-ror50
+    - rh-ror50:
+        macros:
+          install_scl: 0
     # Packages required by RSpec, Cucumber
     - rubygem-rspec
     - rubygem-rspec-core:
@@ -145,3 +147,4 @@ rh-ror50:
     # Packages required by MongoDB (Special request)
     - rubygem-bson
     - rubygem-mongo
+    - rh-ror50
