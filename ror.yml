@@ -40,7 +40,9 @@ rh-ror50:
     - rubygem-coderay
     - rubygem-thread_order
     - rubygem-gherkin
-    - rubygem-multi_test
+    - rubygem-multi_test:
+        macros:
+          _with_bootstrap: 1
     - rubygem-ffi
     - rubygem-childprocess
     - rubygem-multi_json
@@ -71,6 +73,7 @@ rh-ror50:
     - rubygem-thread_safe
     - rubygem-tzinfo
     - rubygem-activesupport
+    - rubygem-multi_test
     - rubygem-bcrypt
     - rubygem-activemodel
     - rubygem-sqlite3
