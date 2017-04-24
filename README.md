@@ -5,7 +5,7 @@ The idea behind this repo is to prepare a recipe for every collection that will 
 The basic information we want to track for rebuilding collections is:
 * `packages` -- set of SRPM belonging to particular collection
 * `requires` -- list of collections it depends on
-* `name` -- nice name of the collcetion, just for completeness
+* `name` -- nice name of the collection, just for completeness
 * macros we need to change in order to break circular dependencies as list of `macro_name value`
 * in the best case also order in which the packages get rebuilt
 
