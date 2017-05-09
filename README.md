@@ -1,67 +1,65 @@
 # Rebuild recipes for Software Collections
 
-The idea behind this repo is to prepare a recipe for every collection that will include *steps to build the collection from scratch*. This will also help everybody else (users/customers) trying to do the same, so it may be part of the documentation later as well.
+The rebuild recipe is a YAML file to manage a collection that will include *steps to build the collection from scratch*
+We will aim to prepare the recipe for every collection.
+This will also help everybody else (users/customers) trying to do the same, so it may be part of the documentation later as well.
 
-The basic information we want to track for rebuilding collections is:
-* `packages` -- set of SRPM belonging to particular collection
-* `requires` -- list of collections it depends on
-* `name` -- nice name of the collection, just for completeness
-* macros we need to change in order to break circular dependencies as list of `macro_name value`
-* in the best case also order in which the packages get rebuilt
+The recipes could be also available at https://www.softwarecollections.org/en/docs/ in the future.
 
-In order to be able to parse the recipe and hopefully rebuild the collections *automatically*, let's use the same format.
+## How to create the recipe file
 
-The recipes could be also available at https://www.softwarecollections.org/en/docs/ in the future as well.
+### Deciding the recipe file name
 
-The format is YAML and it is basically a list of packages in the order in which they may be built and for every package we can specify tweaks necessary to be done. It seems handy to be able to specify recipes for more similar collections in one file, so let's allow it.
+Create your recipe file as `RECIPE_NAME.yml` to manage a list of collection.
+For example a recipe file `python.yml` can manage a collection `python27` and `rh-python34`.
 
-An incomplete (in a way not all packages are mentioned here) example of python collection recipe:
+### File syntax
+
+Below is the file syntax.
 
 ```
-# Recipe for python collections
----
-python33:
-  - name: Python 3.3
-  - packages:
-    - python33
-    - python
-    - python-setuptools
-    - python-docutils
-    - python-markupsafe
-    - python-jinja2:
-        macros:
-          with_docs: 0
-    - python-coverage
-    - python-nose
-        macros:
-          with_docs: 0
-    - python-sphinx
-    - python-pygments
-    - python-jinja2
-    - python-nose
-    - python-simplejson
-    - python-virtualenv
-    - python-el6-only-package:
-        platforms: [el5, el6]
-    - python-sqlalchemy
+COLLECTION_ID_A:
+  name: COLLECTION_NAME
+  requires: [ COLLECTION_ID_a, COLLECTION_ID_b, .. ]
+  packages:
+    - PACKAGE_1
+    - PACKAGE_2:
+      macros:
+        MACRO_NAME_1: MACRO_VALUE_1
+        MACRO_NAME_2: MACRO_VALUE_2
+        ...
+        MACRO_NAME_N: MACRO_VALUE_N
+      replaced_macros:
+        MACRO_NAME_1: MACRO_VALUE_1
+        MACRO_NAME_2: MACRO_VALUE_2
+        ...
+        MACRO_NAME_N: MACRO_VALUE_N
+      platforms: [PLATFORM_1, PLATFORM2, .. ]
+      patch: PATCH_CONTENT
+    - PACKAGE_3
+    ...
+    - PACKAGE_N
 
-python27:
-  - name: Python 2.7  
-  - packages:
-    - python27
-    - python
-    - python-setuptools
-    - python-docutils
-    - python-markupsafe
-    - python-jinja2
-        macros:
-          with_docs: 0
-    - python-coverage
-
-ruby193:
-  - name: Ruby 1.9.3
-  - requires: [v8314]
-  - packages:
-    - ruby
+COLLECTION_ID_B:
+  ...
 ```
 
+### Element and Status
+
+| Element | Decscription | Required? | Supported? |
+| ------- | ------------ | --------- | ---------- |
+| `COLLECTION_ID` | Unique string to describe a collection. It is recommended to use SCL name if possible. | Yes | Yes |
+| `COLLECTION_ID/name`          | Collection name. just for completeness | No | Yes |
+| `COLLECTION_ID/requires` | List of collections that it depends on | No | No |
+| `COLLECTION_ID/packages` | List of SRPM belonging to particular collection by build order. | Yes | Yes |
+| `COLLECTION_ID/packages/PACKAGE/macros` | List of macros to break circular dependencies. Insert those to top of the RPM spec file such as `rpmbuild --define` | No | Yes |
+| `COLLECTION_ID/packages/PACKAGE/replaced_macros` | List of macros to break circular dependencies. Those replaces the value of macro that has already defined in the RPM spec file. | No | Yes |
+| `COLLECTION_ID/packages/PACKAGE/platforms` | Set of platforms that are considered to build. | No | No |
+| `COLLECTION_ID/packages/PACKAGE/patch` | Deprecated, due to that it can be replaced as `macros` or `replaced_macros` element. | No | No |
+
+**Caution**: "Supported?" column means whether the element is supported by the tool to parse the recipe file and build automatically: [RPM List Builder](https://github.com/sclorg/rpm-list-builder).
+  If the element is Supported?: No, the status is only proposed. It can be chnaged in the future.
+
+### Example
+
+Here is [an example](example.yml) of the recipe.
