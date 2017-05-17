@@ -1,8 +1,8 @@
-# Recipe for python collections
+# Recipe for collections
 ---
 python33:
-  - name: Python 3.3
-  - packages:
+  name: Python 3.3
+  packages:
     - python33
     - python
     - python-setuptools
@@ -12,7 +12,7 @@ python33:
         macros:
           with_docs: 0
     - python-coverage
-    - python-nose
+    - python-nose:
         macros:
           with_docs: 0
     - python-sphinx
@@ -26,20 +26,25 @@ python33:
     - python-sqlalchemy
 
 python27:
-  - name: Python 2.7  
-  - packages:
+  name: Python 2.7
+  packages:
     - python27
     - python
     - python-setuptools
     - python-docutils
     - python-markupsafe
-    - python-jinja2
+    - python-jinja2:
         macros:
           with_docs: 0
     - python-coverage
 
-ruby193:
-  - name: Ruby 1.9.3
-  - requires: [v8314]
-  - packages:
-    - ruby
+rh-ror50:
+  name: Ruby on Rails 5.0
+  packages:
+    - rh-ror50:
+        macros:
+          install_scl: 0
+    - rubygem-rspec
+    - rubygem-rspec-core:
+        replaced_macros:
+          need_bootstrap_set: 1
