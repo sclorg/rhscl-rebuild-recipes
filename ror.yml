@@ -23,6 +23,8 @@ rh-ror50:
           need_bootstrap_set: 1
     - rubygem-diff-lcs:
         macros:
+          # Temporary update because of the RPM spec file issue.
+          bootstrap: 1
           _with_bootstrap: 1
     - rubygem-rspec-expectations:
         replaced_macros:
@@ -31,7 +33,9 @@ rh-ror50:
         replaced_macros:
           need_bootstrap_set: 1
     - rubygem-nokogiri
-    - rubygem-flexmock
+    - rubygem-flexmock:
+        macros:
+          _with_bootstrap: 1
     - rubygem-metaclass
     - rubygem-builder
     - rubygem-introspection
@@ -58,6 +62,7 @@ rh-ror50:
     - rubygem-cucumber-wire
     - rubygem-rspec-mocks
     - rubygem-rspec-expectations
+    - rubygem-flexmock
     - rubygem-diff-lcs
     - rubygem-rspec-support
     - rubygem-rspec-core
