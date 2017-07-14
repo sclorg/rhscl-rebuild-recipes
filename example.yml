@@ -48,3 +48,10 @@ rh-ror50:
     - rubygem-rspec-core:
         replaced_macros:
           need_bootstrap_set: 1
+    - rubygem-flexmock:
+        macros:
+          _with_bootstrap: 1
+        cmd:
+          # Hack around flexmock bootstrap
+          - sed -i '/^BuildRequires.*rubygem(rspec)$/ s/^/#/' rubygem-flexmock.spec
+          - sed -i '/^%check$/,/^popd$/ s/^/#/' rubygem-flexmock.spec
