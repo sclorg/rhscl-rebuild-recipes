@@ -40,7 +40,7 @@ COLLECTION_ID_A:
         - COMMAND_2
         ...
         - COMMAND_N
-      platforms: [PLATFORM_1, PLATFORM2, .. ]
+      dist: DIST_RE
       patch: PATCH_CONTENT
     - PACKAGE_3
     ...
@@ -61,7 +61,7 @@ COLLECTION_ID_B:
 | `COLLECTION_ID/packages/PACKAGE/macros` | Mappings of macros to break circular dependencies. Insert those to top of the RPM spec file such as `rpmbuild --define` | Mappings | No | Yes |
 | `COLLECTION_ID/packages/PACKAGE/replaced_macros` | Mappings of macros to break circular dependencies. Those replaces the value of macro that has already defined in the RPM spec file. | Mappings | No | Yes |
 | `COLLECTION_ID/packages/PACKAGE/cmd` | Not recommended. But if `macros` and `replaced_macros` are not enough for your requirement, you can use it. For example `sed -i 'something' foo.spec` to edit RPM spec file. | Union (Scalar or Sequences) | No | Yes |
-| `COLLECTION_ID/packages/PACKAGE/platforms` | Set of platforms that are considered to build. | Sequences | No | No |
+| `COLLECTION_ID/packages/PACKAGE/dist` | Distribution platforms that are considered to build. The format is a regular expression. A `platforms` element was changed to this element. Use `dist` instead of `platforms` element. | Scalar | No | Yes |
 | `COLLECTION_ID/packages/PACKAGE/patch` | Deprecated, due to that it can be replaced as `macros`, `replaced_macros`, or `cmd` element. | Scalar | No | No |
 
 **Caution**: "Supported?" column means whether the element is supported by the tool to parse the recipe file and build automatically: [RPM List Builder](https://github.com/sclorg/rpm-list-builder).

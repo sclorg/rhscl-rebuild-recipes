@@ -13,6 +13,13 @@ rh-ror50:
     - rh-ror50:
         macros:
           install_scl: 0
+        cmd:
+          - |
+            if [[ "${DIST}" =~ centos7? ]]; then
+                sed -i 's/rh-ruby24/rh-ruby23/g' rh-ror50.spec
+                sed -i 's/rh-nodejs6/rh-nodejs4/g' rh-ror50.spec
+                sed -i 's/rh-mongodb32/rh-mongodb26/g' rh-ror50.spec
+            fi
     # Packages required by RSpec, Cucumber
     - rubygem-rspec
     - rubygem-rspec-core:
@@ -131,6 +138,12 @@ rh-ror50:
     - rubygem-railties:
         macros:
           _with_bootstrap: 1
+        cmd:
+          # Because CentOS rubygem-minitest version is older than RHEL.
+          - |
+            if [[ "${DIST}" =~ centos7? ]]; then
+                sed -i '/^patch -p2 < %{PATCH2}$/ s/^/#/' rubygem-railties.spec
+            fi
     - rubygem-dalli
     - rubygem-globalid
     - rubygem-actionpack
@@ -143,7 +156,13 @@ rh-ror50:
     - rubygem-jquery-rails
     - rubygem-turbolinks-source
     - rubygem-turbolinks
-    - rubygem-railties
+    - rubygem-railties:
+        cmd:
+          # Because CentOS rubygem-minitest version is older than RHEL.
+          - |
+            if [[ "${DIST}" =~ centos7? ]]; then
+                sed -i '/^patch -p2 < %{PATCH2}$/ s/^/#/' rubygem-railties.spec
+            fi
     # Packages required by Rails application
     - rubygem-puma
     - rubygem-sass-rails

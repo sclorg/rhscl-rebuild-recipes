@@ -22,7 +22,8 @@ python33:
     - python-simplejson
     - python-virtualenv
     - python-el6-only-package:
-        platforms: [el5, el6]
+        # This matches with el, el5, el6.
+        dist: "el[56]?"
     - python-sqlalchemy
 
 python27:
@@ -52,6 +53,13 @@ rh-ror50:
         macros:
           _with_bootstrap: 1
         cmd:
-          # Hack around flexmock bootstrap
           - sed -i '/^BuildRequires.*rubygem(rspec)$/ s/^/#/' rubygem-flexmock.spec
           - sed -i '/^%check$/,/^popd$/ s/^/#/' rubygem-flexmock.spec
+    - rubygem-railties:
+        # variable DIST (= value of command option --dist) is available.
+        # in cmd element.
+        cmd: |
+          # This matches with centos, centos7.
+          if [[ "${DIST}" =~ centos7? ]]; then
+              sed -i '/^patch -p2 < %{PATCH2}$/ s/^/#/' rubygem-railties.spec
+          fi
