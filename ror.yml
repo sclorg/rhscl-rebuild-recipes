@@ -5,10 +5,10 @@ rh-ror50:
   requires: [rh-ruby23, rh-nodejs4, rh-mongodb32]
   # install: Copr - Settings - Build options - Click "Edit" on target
   #   Packages
-  install:
-    - scl-utils-build
-    - rh-ruby23-scldevel
-    - rh-ror50-build
+  # install:
+  #   - scl-utils-build
+  #   - rh-ruby23-scldevel
+  #   - rh-ror50-build
   packages:
     - rh-ror50:
         macros:
