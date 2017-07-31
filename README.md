@@ -52,17 +52,17 @@ COLLECTION_ID_B:
 
 ### Element and Status
 
-| Element | Decscription | Required? | Supported? |
-| ------- | ------------ | --------- | ---------- |
-| `COLLECTION_ID` | Unique string to describe a collection. It is recommended to use SCL name if possible. | Yes | Yes |
-| `COLLECTION_ID/name`          | Collection name. just for completeness | No | Yes |
-| `COLLECTION_ID/requires` | List of collections that it depends on | No | No |
-| `COLLECTION_ID/packages` | List of SRPM belonging to particular collection by build order. | Yes | Yes |
-| `COLLECTION_ID/packages/PACKAGE/macros` | List of macros to break circular dependencies. Insert those to top of the RPM spec file such as `rpmbuild --define` | No | Yes |
-| `COLLECTION_ID/packages/PACKAGE/replaced_macros` | List of macros to break circular dependencies. Those replaces the value of macro that has already defined in the RPM spec file. | No | Yes |
-| `COLLECTION_ID/packages/PACKAGE/cmd` | Not recommended. But if `macros` and `replaced_macros` are not enough for your requirement, you can use it. For example `sed -i 'something' foo.spec` to edit RPM spec file. You can use both array and string element as the value. | No | Yes |
-| `COLLECTION_ID/packages/PACKAGE/platforms` | Set of platforms that are considered to build. | No | No |
-| `COLLECTION_ID/packages/PACKAGE/patch` | Deprecated, due to that it can be replaced as `macros`, `replaced_macros`, or `cmd` element. | No | No |
+| Element | Decscription | Kind | Required? | Supported? |
+| ------- | ------------ | ---- | --------- | ---------- |
+| `COLLECTION_ID` | Unique string to describe a collection. It is recommended to use SCL name if possible. | Scalar | Yes | Yes |
+| `COLLECTION_ID/name`          | Collection name. just for completeness | Scalar | No | Yes |
+| `COLLECTION_ID/requires` | Sequences of collections that the collection depends on | Sequences | No | No |
+| `COLLECTION_ID/packages` | Sequences of SRPM belonging to particular collection by build order. | Sequences of Union (Scalar or Mappings) | Yes | Yes |
+| `COLLECTION_ID/packages/PACKAGE/macros` | Mappings of macros to break circular dependencies. Insert those to top of the RPM spec file such as `rpmbuild --define` | Mappings | No | Yes |
+| `COLLECTION_ID/packages/PACKAGE/replaced_macros` | Mappings of macros to break circular dependencies. Those replaces the value of macro that has already defined in the RPM spec file. | Mappings | No | Yes |
+| `COLLECTION_ID/packages/PACKAGE/cmd` | Not recommended. But if `macros` and `replaced_macros` are not enough for your requirement, you can use it. For example `sed -i 'something' foo.spec` to edit RPM spec file. | Union (Scalar or Sequences) | No | Yes |
+| `COLLECTION_ID/packages/PACKAGE/platforms` | Set of platforms that are considered to build. | Sequences | No | No |
+| `COLLECTION_ID/packages/PACKAGE/patch` | Deprecated, due to that it can be replaced as `macros`, `replaced_macros`, or `cmd` element. | Scalar | No | No |
 
 **Caution**: "Supported?" column means whether the element is supported by the tool to parse the recipe file and build automatically: [RPM List Builder](https://github.com/sclorg/rpm-list-builder).
   If the element is Supported?: No, the status is only proposed. It can be chnaged in the future.
