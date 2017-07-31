@@ -20,7 +20,11 @@ Below is the file syntax.
 ```
 COLLECTION_ID_A:
   name: COLLECTION_NAME
-  requires: [ COLLECTION_ID_a, COLLECTION_ID_b, .. ]
+  requires:
+    - COLLECTION_ID_1
+    - COLLECTION_ID_2
+    ...
+    - COLLECTION_ID_N
   packages:
     - PACKAGE_1
     - PACKAGE_2:
