@@ -14,3 +14,10 @@ rh-ruby22:
     - rubygem-net-http-persistent
     - rubygem-thor
     - rubygem-bundler
+
+rh-ruby24:
+  name: Ruby 2.4
+  packages:
+    - rh-ruby24
+    - ruby
+    - rubygem-bundler
