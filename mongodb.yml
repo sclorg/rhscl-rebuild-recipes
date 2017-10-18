@@ -27,3 +27,84 @@ rh-mongodb26:
     - mongo-java-driver
     - mongodb
 
+rh-mongodb30upg:
+  name: MongoDB 3.0upg
+  requires: [v3814, python27]
+  packages:
+    - rh-mongodb30upg
+    - scons
+    - libstemmer
+    - libunwind:
+        dist: "el6"
+    - gperftools:
+        dist: "el6"
+    - boost
+    - yaml-cpp
+    - mongodb
+
+rh-mongodb32:
+  name: MongoDB 3.2
+  requires: [rh-java-common, rh-maven33, python27]
+  packages:
+    - rh-mongodb32
+    - scons
+    - libstemmer
+    - libunwind:
+        dist: "el6"
+    - gperftools:
+        dist: "el6"
+    - boost:
+        dist: "el6"
+    - yaml-cpp
+    - mozjs38
+    - mongodb
+    - mongo-cxx-driver
+    - mongo-java-driver
+    - golang
+    - golang-github-go-mgo-mgo
+    - golang-github-go-tomb-tomb
+    - golang-github-howeyc-gopass
+    - golang-github-jessevdk-go-flags
+    - golang-github-jtolds-gls
+    - golang-github-smartystreets-goconvey
+    - golang-github-smartystreets-assertions
+    - golang-github-spacemonkeygo-flagfile
+    - golang-googlecode-go-crypto
+    - golang-gopkg-check
+    - golang-github-spacemonkeygo-spacelog
+    - golang-gopkg-yaml
+    - golang-github-10gen-openssl
+    - mongo-tools
+
+
+rh-mongodb34:
+  name: MongoDB 3.4
+  requires: [rh-python36, go-toolset-7]
+  packages:
+    - rh-mongodb34
+    - scons
+    - libstemmer
+    - libunwind
+    - gperftools
+    - boost
+    - yaml-cpp
+    - libbson
+    - mongodb
+    - mongo-c-driver
+    - mongo-cxx-driver
+    - mongo-tools
+    - disruptor:
+        dist: "el7"
+    - apache-logging-parent:
+        dist: "el7"
+    - jctools:
+        dist: "el7"
+    - log4j:
+        dist: "el7"
+    - os-maven-plugin:
+        dist: "el7"
+    - netty:
+        dist: "el7"
+    - mongo-java-driver:
+        dist: "el7"
+
