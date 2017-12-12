@@ -21,3 +21,17 @@ rh-ruby24:
     - rh-ruby24
     - ruby
     - rubygem-bundler
+
+rh-ruby25:
+  name: Ruby 2.5
+  packages:
+    - rh-ruby25:
+        macros:
+          install_scl: 0
+    - ruby
+    - rubygem-bundler
+    - rubygem-mysql2
+    - rubygem-pg
+    - rubygem-bson
+    - rubygem-mongo
+    - rh-ruby25
