@@ -12,3 +12,8 @@ rh-postgresql94:
     - rh-postgresql94
     - postgresql
 
+rh-postgresql10:
+  name: PostgreSQL 10
+  packages:
+    - rh-postgresql10
+    - postgresql
