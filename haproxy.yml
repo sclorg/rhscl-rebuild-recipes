@@ -1,0 +1,5 @@
+rh-haproxy18:
+  name: HAProxy 1.8
+  packages:
+    - rh-haproxy18
+    - haproxy
