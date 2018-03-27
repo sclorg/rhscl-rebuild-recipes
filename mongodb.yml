@@ -108,3 +108,41 @@ rh-mongodb34:
     - mongo-java-driver:
         dist: "el7"
 
+rh-mongodb36:
+  name: MongoDB 3.6
+  requires: [go-toolset-7, rh-maven35, rh-java-common, rh-python36, devtoolset-7]
+  packages:
+    - rh-mongodb36:
+        cmd: |
+          sed -i $'/%post runtime/i\\\n%{?python36_os_install_post:%global __os_install_post %python36_os_install_post}\\\n' rh-mongodb36.spec
+    - libstemmer
+    - gperftools
+    - boost
+    - yaml-cpp
+    - libbson
+    - python-markdown   # buildtime
+    - python-cheetah    # buildtime
+    - python-chardet
+    - python-pysocks
+    - python-urllib3
+    - python-requests
+    - mongodb
+    - mongo-c-driver
+    - mongo-cxx-driver:
+        cmd: sed -i 's/devtoolset-6/devtoolset-7/g' mongo-cxx-driver.spec
+    - mongo-tools
+    - jctools:
+        dist: "el7"
+    - disruptor:
+        dist: "el7"
+    - apache-logging-parent:
+        dist: "el7"
+    - log4j:
+        dist: "el7"
+    - os-maven-plugin:
+        dist: "el7"
+    - netty:
+        dist: "el7"
+    - mongo-java-driver:
+        dist: "el7"
+
