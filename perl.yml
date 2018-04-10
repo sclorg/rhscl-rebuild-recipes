@@ -867,6 +867,7 @@ rh-perl526:
     - perl-Exception-Class
     - perl-File-ShareDir
     - perl-Parse-PMFile
+    - perl-Apache-Reload
     - perl-Devel-LexAlias
     - perl-Date-ISO8601
     - perl-Parallel-ForkManager
@@ -919,4 +920,4 @@ rh-perl526:
     - perl-JSON-PP
     - perl-Module-Build
     - perl-Role-Tiny
-# Result is 197 source and 277 binary (232 ordinar, 45 debuginfo) packages.
+# Result is 198 source and 278 binary (233 ordinar, 45 debuginfo) packages.
