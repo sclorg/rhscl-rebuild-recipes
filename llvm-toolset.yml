@@ -1,0 +1,14 @@
+# Recipes for llvm-toolsets
+---
+llvm-toolset-7.0:
+  name: Clang and LLVM Toolset 7.0
+  packages:
+    - llvm-toolset
+    - cmake
+    - python-lit
+    - llvm
+    - libomp
+    - lld
+    - compiler-rt
+    - clang
+    - lldb
