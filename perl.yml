@@ -1,10 +1,10 @@
-# Recipe for Perl collections
+# A recipe for Perl collections
 #
 # NOTES:
 # * After building a package, the package must be put into a repository in
-# order to satisfy dependencies of subsequent packages.
+# order to satisfy the dependencies of the subsequent packages.
 # * That applies to multiple-times rebuilt packages too (e.g. rh-perl520 and
-# perl). Especially make sure that the resulting binary packages replace
+# perl). Especially make sure that the resulting binary packages replace the
 # previously installed packages (e.g. rh-perl520-build) right after building
 # them.
 # * All steps are cumulative. That means once a package is explicitly
@@ -14,12 +14,15 @@
 # `rebuild_from_scratch' macro values. Redefining them externally (e.g. by
 # rpmbuild --define) will not help as they are defined in the specification
 # file.
-# * The `install' and `patch' directives must be peformed before building the
-# associated package in order to affect rebuild of the associated package.
-# * The packages ordering guarantees flawless rebuild of the whole collection.
-# Some of the package subsequences are actually independent allowing
-# a parallel rebuild. However, boundaries of these subsequencies are not
-# marked up in this recipe.
+# * The `cmd' directive expects a fresh new sources. I.e. without
+# modification leftovers from the previous package build.
+# * The `install', `patch', and `cmd' directives must be peformed before
+# building the associated package in order to affect a rebuild of the
+# associated package.
+# * The packages ordering guarantees a flawless rebuild of the whole
+# collection. Some of the package subsequences are actually independent
+# allowing a parallel rebuild. However, boundaries of these subsequencies are
+# not marked up in this recipe.
 ---
 
 perl516:
@@ -921,3 +924,258 @@ rh-perl526:
     - perl-Module-Build
     - perl-Role-Tiny
 # Result is 198 source and 278 binary (233 ordinar, 45 debuginfo) packages.
+
+rh-perl530:
+  name: Perl 5.30 collection
+  requires: [httpd24]
+  packages:
+    - rh-perl530:
+        install:
+          - scl-utils-build
+        cmd: |
+          sed -i -e 's/^#%%perl_bootstrap 1$/%perl_bootstrap 1/' macro-build
+    - perl:
+        install:
+          - rh-perl530-build
+    - perl-Fedora-VSP
+    - perl-generators
+    - perl-Module-Load
+    - perl-Term-Cap
+    - perl-Pod-Escapes
+    - perl-threads
+    - perl-Sub-Uplevel
+    - perl-Params-Check
+    - perl-Term-ANSIColor
+    - perl-Variable-Magic
+    - perl-Linux-Pid
+    - perl-Digest-MD5
+    - perl-HTTP-Date
+    - perl-File-Path
+    - perl-ExtUtils-Install
+    - perl-autodie
+    - perl-experimental
+    - perl-inc-latest
+    - perl-Carp
+    - perl-Params-Util
+    - perl-Pod-Usage
+    - perl-ExtUtils-PkgConfig
+    - perl-Sub-Install
+    - perl-Time-HiRes
+    - perl-Pod-Simple
+    - perl-Compress-Raw-Bzip2
+    - perl-Socket
+    - perl-Test-Requires
+    - perl-Test-Inter
+    - perl-Class-Data-Inheritable
+    - perl-DB_File
+    - perl-CPAN-Meta-Requirements
+    - perl-perlfaq
+    - perltidy
+    - perl-Test-Harness
+    - perl-Scalar-List-Utils
+    - perl-Capture-Tiny
+    - perl-Compress-Bzip2
+    - perl-ExtUtils-Manifest
+    - perl-Math-BigRat
+    - perl-Test-Without-Module
+    - perl-ExtUtils-ParseXS
+    - perl-Unicode-Normalize
+    - perl-Scope-Guard
+    - perl-DBI
+    - perl-Module-Runtime
+    - perl-threads-shared
+    - perl-Importer
+    - perl-Data-Dumper
+    - perl-Mozilla-CA
+    - perl-ExtUtils-CBuilder
+    - perl-Devel-Hide
+    - perl-Env
+    - perl-Filter
+    - perl-Test-Simple
+    - perl-File-ShareDir-Install
+    - perl-version
+    - perl-Sub-Identify
+    - perl-parent
+    - perl-Devel-Size
+    - perl-Number-Compare
+    - perl-IPC-SysV
+    - perl-ExtUtils-MakeMaker
+    - perl-Try-Tiny
+    - perl-Storable
+    - perl-Time-Local
+    - perl-MIME-Base64
+    - perl-IPC-Run3
+    - perl-Pod-Perldoc
+    - perl-Filter-Simple
+    - perl-Module-Load-Conditional
+    - perl-CPAN-Meta-YAML
+    - perl-Config-Perl-V
+    - perl-Ref-Util-XS
+    - perl-HTTP-Tiny
+    - perl-IO-Tty
+    - perl-IO-Socket-IP
+    - perl-PathTools
+    - perl-Algorithm-Diff
+    - perl-Digest-SHA
+    - perl-Test-Deep
+    - perl-Devel-StackTrace
+    - perl-Module-Metadata
+    - perl-MRO-Compat
+    - perl-constant
+    - perl-Class-Tiny
+    - perl-Object-HashBase
+    - perl-Encode
+    - perl-Getopt-Long
+    - perl-bignum
+    - perl-File-Temp
+    - perl-JSON-PP
+    - perl-CPAN-Meta
+    - perl-File-Fetch
+    - perl-Math-BigInt
+    - perl-Text-Tabs+Wrap
+    - perl-Archive-Tar
+    - perl-Digest-HMAC
+    - perl-File-Which
+    - perl-TimeDate
+    - perl-Pod-Checker
+    - perl-Unicode-Collate
+    - perl-libnet
+    - perl-Exporter
+    - perl-Perl-OSType
+    - perl-Locale-Maketext
+    - perl-String-ShellQuote
+    - perl-Archive-Zip
+    - perl-YAML
+    - perl-IPC-Cmd
+    - perl-Compress-Raw-Zlib
+    - perl-Test-Warnings
+    - perl-Test-utf8
+    - perl-podlators
+    - perl-Text-Glob
+    - perl-File-pushd
+    - perl-Data-Dump
+    - perl-IPC-System-Simple
+    - perl-BSD-Resource
+    - perl-Module-CoreList
+    - perl-Test-Needs
+    - perl-Class-Singleton
+    - perl-Text-Template
+    - perl-CPAN-DistnameInfo
+    - perl-PadWalker
+    - perl-Devel-PPPort
+    - perl-Digest
+    - perl-HTML-Tagset
+    - perl-Text-ParseWords
+    - perl-Class-Inspector
+    - perl-CPAN
+    - perl-PerlIO-via-QuotedPrint
+    - perl-IO-HTML
+    - perl-Thread-Queue
+    - perl-Sys-Syslog
+    - perl-Text-Balanced
+    - perl-Encode-Locale
+    - perl-Pod-Parser
+    - perl-File-Listing
+    - perl-Test-FailWarnings
+    - perl-File-ShareDir
+    - perl-IO-Compress
+    - perl-Ref-Util
+    - perl-Term-Table
+    - perl-Text-Diff
+    - perl-Net-SSLeay
+    - perl-Package-Generator
+    - perl-Devel-Caller
+    - perl-Test-File
+    - perl-Exception-Class
+    - perl-Locale-Codes
+    - perl-Math-BigInt-FastCalc
+    - perl-Test-Warn
+    - perl-URI
+    - perl-NTLM
+    - perl-Sub-Info
+    - mod_perl
+    - perl-File-HomeDir
+    - perl-DBD-Pg
+    - perl-Module-CPANfile
+    - perl-Module-Build
+    - perl-IPC-Run
+    - perl-Data-OptList
+    - perl-CPAN-Meta-Check
+    - perl-Test-Fatal
+    - perl-Test-NoWarnings
+    - perl-Parse-PMFile
+    - perl-File-Find-Rule
+    - perl-Devel-CheckLib
+    - perl-App-cpanminus
+    - perl-Module-Pluggable
+    - perl-local-lib
+    - perl-Devel-LexAlias
+    - perl-DBD-SQLite
+    - perl-Class-Method-Modifiers
+    - perl-Sub-Quote
+    - perl-Test2-Suite
+    - perl-Dist-CheckConflicts
+    - perl-Apache-Reload
+    - perl-LWP-MediaTypes
+    - perl-Date-ISO8601
+    - perl-Parallel-ForkManager
+    - perl-IO-Socket-SSL
+    - perl-Package-Stash-XS
+    - perl-Sub-Exporter
+    - perl-Module-Implementation
+    - perl-DynaLoader-Functions
+    - perl-WWW-RobotRules
+    - perl-Unicode-UTF8
+    - perl-HTML-Parser
+    - perl-DBD-MySQL
+    - perl-Net-HTTP
+    - perl-HTTP-Message
+    - perl-Devel-CallChecker
+    - perl-Eval-Closure
+    - perl-Path-Tiny
+    - perl-Sub-Exporter-Progressive
+    - perl-Test2-Plugin-NoWarnings
+    - perl-Role-Tiny
+    - perl-Data-Section
+    - perl-Package-Stash
+    - perl-Software-License
+    - perl-HTTP-Daemon
+    - perl-B-Hooks-EndOfScope
+    - perl-Specio
+    - perl-HTTP-Negotiate
+    - perl-File-Copy-Recursive
+    - perl-HTTP-Cookies
+    - perl-Params-Classify
+    - perl-DateTime-TimeZone-SystemV
+    - perl-Test-File-ShareDir
+    - perl-namespace-clean
+    - perl-libwww-perl
+    - perl-Params-ValidationCompiler
+    - perl-namespace-autoclean
+    - perl-LWP-Protocol-https
+    - perl-DateTime-TimeZone-Tzfile
+    - perl-DateTime-Locale
+    - perl-DateTime-TimeZone
+    - perl-DateTime
+    - rh-perl530
+    - perl
+    - perl-Archive-Tar
+    - perl-autodie
+    - perl-Compress-Bzip2
+    - perl-Compress-Raw-Bzip2
+    - perl-Compress-Raw-Zlib
+    - perl-Config-Perl-V
+    - perl-CPAN
+    - perl-CPAN-Meta-YAML
+    - perl-Data-Dumper
+    - perl-DateTime-TimeZone
+    - perl-DB_File
+    - perl-DBI
+    - perl-ExtUtils-MakeMaker
+    - perl-Fedora-VSP
+    - perl-Filter
+    - perl-generators
+    - perl-Module-Build
+    - perl-Sys-Syslog
+    - perl-Test-Simple
+# The result is 222 source and 307 binary (259 ordinar, 48 debuginfo) packages.
