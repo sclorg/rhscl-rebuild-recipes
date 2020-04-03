@@ -35,3 +35,30 @@ rh-ruby25:
     - rubygem-bson
     - rubygem-mongo
     - rh-ruby25
+
+rh-ruby26:
+  name: Ruby 2.6
+  packages:
+    - rh-ruby26:
+        macros:
+          install_scl: 0
+    - ruby
+    - rubygem-bundler
+    - rubygem-mysql2
+    - rubygem-pg
+    - rubygem-bson
+    - rubygem-mongo
+    - rh-ruby26
+
+rh-ruby27:
+  name: Ruby 2.7
+  packages:
+    - rh-ruby27:
+        macros:
+          install_scl: 0
+    - ruby
+    - rubygem-mysql2
+    - rubygem-pg
+    - rubygem-bson
+    - rubygem-mongo
+    - rh-ruby27
